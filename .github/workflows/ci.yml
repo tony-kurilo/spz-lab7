@@ -35,5 +35,13 @@ jobs:
       - name: Build Docker image
         run: docker build -t spz_lab7 .
 
+
+  deploy-to-prod:
+    needs: docker-build
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      # Увімкни manual approval в GitHub → Settings → Environments → production
+    steps:
       - name: Simulate deploy
-        run: echo "Deploy done (simulation)"
+        run: echo "🚀 Production deploy approved and simulated!"
